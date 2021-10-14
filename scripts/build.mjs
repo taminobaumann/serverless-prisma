@@ -1,0 +1,1 @@
+await $`chmod +x scripts/ci/build.sh && scripts/ci/build.sh`;

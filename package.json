@@ -1,0 +1,21 @@
+{
+  "scripts": {
+    "deploy": "zx scripts/build.mjs && zx scripts/deploy.mjs",
+    "offline": "zx scripts/build.mjs && cd build/lambdas && serverless offline"
+  },
+  "dependencies": {
+    "@prisma/client": "^3.2.1",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.175",
+    "@types/node": "^16.10.9",
+    "prisma": "^3.2.1",
+    "serverless": "^2.62.0",
+    "serverless-dotenv-plugin": "^3.10.0",
+    "serverless-offline": "^8.2.0",
+    "ts-node": "^10.3.0",
+    "typescript": "^4.4.4",
+    "zx": "^4.2.0"
+  }
+}

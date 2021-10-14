@@ -1,0 +1,36 @@
+org: yourtasktree
+app: test
+service: lambda-layers
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  lambdaHashingVersion: '20201221'
+  stage: prod
+  region: eu-central-1
+
+layers:
+  NodeModules:
+    path: ../lambda-layers-node_modules
+  Prisma:
+    path: ../lambda-layers-prisma-client
+  Lib:
+    path: ../lambda-layers-libs
+
+functions:
+  add:
+    handler: add/app.handler
+    events:
+      - http:
+          path: /add
+          method: get
+    environment:
+      NODE_ENV: production
+    layers:
+      - { Ref: NodeModulesLambdaLayer }
+      - { Ref: PrismaLambdaLayer }
+      - { Ref: LibLambdaLayer }
+
+plugins:
+  - serverless-dotenv-plugin
+  - serverless-offline
